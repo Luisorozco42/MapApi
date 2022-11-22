@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Búsqueda en el mapa</title>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+        <link rel="stylesheet" type="text/css" href="location.css">
+        <style type='text/css'>body{font-family:'Segoe UI',Helvetica,Arial,Sans-Serif}</style>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
+    </head>
+    <body>
+        <div class="loader"></div>
+        <H1>Buscar un sitio en específico</H1>
+        <br>
+        <div id='printoutPanel'></div>
+        <div id='myMap'  class="map" style='width: auto; height: 500px;'></div>
+
+        <div id="littleform">
+            <p>Ingrese las coordenadas usando las coodenadas decimales</p>
+            <br>
+            <p id="coordenadas">Latitud: </p><input type="number" id="longitud" class="coordenada">
+            <p id="coordenadas">Longitud: </p><input type="number" id="latitud" class="coordenada">
+            <button id="search" onclick="send()">Buscar</button>
+
+        </div>
+        
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.loader').fadeOut(4500);  /*FadeOut after page loaded*/
+                console.log("document loaded!");
+            });
+        </script>
+        <script>
+            function send(){
+                var number1, number2;
+                number1 = $("#longitud").val();
+                number2 = $("#latitud").val();
+                $("#longitud").val(0);
+				$("#latitud").val(0);
+                searchlocation(number1, number2);
+            }
+        </script>
+
+        <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AnljbcCMUWKWd_bXueN2tfpxnIoRF01fxlIv8zgauN_ZnYKoReAOF1pEfB-PZzdm&callback=loadMapScenario' async defer></script>
+        <script src="location.js"></script>
+    </body>
+</html>
